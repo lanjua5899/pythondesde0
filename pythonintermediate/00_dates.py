@@ -10,20 +10,19 @@ from datetime import datetime
 now = datetime.now()
 
 
-def print(now.day)
-
-
-print(now.hour)
-print(now.minute)
-print(now.second)
-print(now.year)
-print(now.month)
-print(now.timestamp())
+def print_date(date):
+    print(date.year)
+    print(date.month)
+    print(date.day)
+    print(date.hour)
+    print(date.minute)
+    print(date.second)
+    print(date.timestamp())
 
 
 print_date(now)
 
-year_2025 = date(2025, 1, 1)
+year_2025 = datetime(2025, 1, 1)
 
 print_date(year_2025)
 
@@ -31,7 +30,7 @@ print_date(year_2025)
 
 current_time = time(23, 59, 59)
 print(current_time.hour)
-print(current_time.minute)
+print(current_time.min)
 print(current_time.second)
 
 # Date
@@ -39,8 +38,8 @@ print(current_time.second)
 current_date = date.today()
 
 print(current_date.year)
-print(current.date.month)
-print(current.date.day)
+print(current_date.month)
+print(current_date.day)
 
 current_date = date(2024, 10, 6)
 
