@@ -55,8 +55,8 @@ with open("pythonintermediate/my_other_file.txt", "w") as my_other_file:
     my_other_file.write("Hola, soy otro fichero\n")
 
 # Elimina el fichero si existe
-if os.path.exists("my_file.txt"):
-    os.remove("my_file.txt")
+# if os.path.exists("my_file.txt"):
+#    os.remove("my_file.txt")
 
 # .json file
 # Crear un fichero JSON
@@ -64,14 +64,14 @@ json_file = open("pythonintermediate/person.json", "w+")
 
 # Escribir en el fichero JSON
 
-json_file.write('''{
+json_test = {
     "name": "Juan",
     "surname": "Perez Lang",
     "age": 33,
     "languages": ["Python", "JavaScript"],
     "occupation": "Cloud Engineer",
-    "is_autodidact": True
-}''')
+    "is_autodidact": "True"
+}
 
 
 # El método dump() convierte un objeto Python en una cadena JSON y lo escribe en un fichero
@@ -81,17 +81,14 @@ json_file.write('''{
 
 
 # Convertir la cadena JSON en un objeto Python
-json.dump(json.loads(json_file.read()), open(
-    "pythonintermediate/person.json", "w+", encoding="utf-8"), indent=4)
-
-
-with open("pythonintermediate/person.json", "r", encoding="utf-8") as json_file:
-    data = json.load(json_file)
-    print(data)
+json.dump(json_test, json_file, indent=4)
 
 # Cerrar el fichero JSON
 json_file.close()
 
+with open("pythonintermediate/person.json", "r") as json_file:
+    # Cargar el fichero JSON en un objeto Python
+    json_test = json.load(json_file)
 
 # .csv file
 # Crear un fichero CSV
@@ -106,7 +103,7 @@ csv_writer.writerow(
 # Cerrar el fichero CSV
 csv_file.close()
 
-
+# Leer el fichero CSV
 with open("pythonintermediate/person.csv", "r") as csv_file:
     csv_reader = csv.reader(csv_file)
     for row in csv_reader:

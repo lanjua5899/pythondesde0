@@ -1,0 +1,2 @@
+name,surname,age,languages,occupation,is_autodidact
+Juan,Perez Lang,33,"['Python', 'JavaScript']",Cloud Engineer,True

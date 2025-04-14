@@ -2,7 +2,10 @@
     "name": "Juan",
     "surname": "Perez Lang",
     "age": 33,
-    "languages": ["Python", "JavaScript"],
+    "languages": [
+        "Python",
+        "JavaScript"
+    ],
     "occupation": "Cloud Engineer",
-    "is_autodidact": True
+    "is_autodidact": "True"
 }
