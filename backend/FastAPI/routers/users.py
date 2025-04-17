@@ -1,5 +1,5 @@
 ### Users API ###
-from fastapi import APIRouter
+from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel
 
 # Iniciar el servidor:
