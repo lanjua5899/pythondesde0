@@ -9,8 +9,12 @@
 from typing import Union
 
 from fastapi import FastAPI
+from routers import users
 
 app = FastAPI()
+
+# Routers
+app.include_router(users.router)  # Incluye el router de usuarios
 
 # Url local: http://127.0.0.1:8000
 
