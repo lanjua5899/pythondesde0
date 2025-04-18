@@ -45,12 +45,15 @@ async def user(id: int):
 
 @router.get("/user/")  # Query
 async def user(id: int):
+    # Si no se pasa el id lanzamos una excepción
+    if id is None:
+        raise HTTPException(status_code=400)
     return search_user(id)
 
 
 @router.post("/user/", response_model=User, status_code=201)
 async def user(user: User):
-    if type(search_user(user.id)) == User:
+    if isinstance(search_user(user.id), User):
         # Si el usuario ya existe lanzamos una excepción
         raise HTTPException(status_code=404, detail="El usuario ya existe")
 
@@ -89,5 +92,5 @@ def search_user(id: int):
     users = filter(lambda user: user.id == id, users_list)
     try:
         return list(users)[0]
-    except:
+    except IndexError:
         return {"error": "No se ha encontrado el usuario"}
