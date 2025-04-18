@@ -52,5 +52,7 @@ def search_user(id: int):
     users = filter(lambda user: user.id == id, users_list)
     try:
         return list(users)[0]
-    except:
-        return {"error": "No se ha encontrado el usuario"}
+    except IndexError:  # Si no se encuentra el usuario utilizamos el raise
+        # HTTPException para lanzar una excepción
+        raise HTTPException(
+            status_code=404, detail="No se ha encontrado el usuario")
