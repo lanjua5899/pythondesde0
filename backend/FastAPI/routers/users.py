@@ -29,7 +29,7 @@ users_list = [User(id=1, name="Juan", surname="Perez Lang", age=33, url="https:/
 async def usersjson():  # JSON de ejemplo
     return [{"name": "Juan", "surname": "Perez Lang", "age": 33, "url": "https://www.linktree.com/juanmathiasperezlang"},
             {"name": "Elias", "surname": "Varon", "age": 37,
-                "url": "https://www.instagram.com/eav"},
+                "url": "https://www.instagram.com/eav.ok"},
             {"name": "Franco", "surname": "Costa", "age": 29, "url": "https://www.amgmadrid.com/"}]
 
 
@@ -48,11 +48,11 @@ async def user(id: int):
     return search_user(id)
 
 
-@router.post("/user/")
+@router.post("/user/", response_model=User, status_code=201)
 async def user(user: User):
     if type(search_user(user.id)) == User:
         # Si el usuario ya existe lanzamos una excepción
-        raise HTTPException(status_code=400, detail="El usuario ya existe")
+        raise HTTPException(status_code=404, detail="El usuario ya existe")
 
     users_list.append(user)
     return user
@@ -89,7 +89,5 @@ def search_user(id: int):
     users = filter(lambda user: user.id == id, users_list)
     try:
         return list(users)[0]
-    except IndexError:  # Si no se encuentra el usuario utilizamos el raise
-        # HTTPException para lanzar una excepción
-        raise HTTPException(
-            status_code=404, detail="No se ha encontrado el usuario")
+    except:
+        return {"error": "No se ha encontrado el usuario"}
