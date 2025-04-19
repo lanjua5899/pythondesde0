@@ -26,7 +26,7 @@ users_list = [User(id=1, name="Juan", surname="Perez Lang", age=33, url="https:/
               User(id=3, name="Franco", surname="Costa", age=29, url="https://www.amgmadrid.com/")]
 
 
-@router.get("/users")
+@router.get("/")
 async def usersjson():  # JSON de ejemplo
     return [{"name": "Juan", "surname": "Perez Lang", "age": 33, "url": "https://www.linktree.com/juanmathiasperezlang"},
             {"name": "Elias", "surname": "Varon", "age": 37,
@@ -34,7 +34,7 @@ async def usersjson():  # JSON de ejemplo
             {"name": "Franco", "surname": "Costa", "age": 29, "url": "https://www.amgmadrid.com/"}]
 
 
-@router.get("/users")
+@router.get("/")
 async def users():
     return users_list
 
