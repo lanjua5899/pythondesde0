@@ -15,7 +15,7 @@ app = FastAPI()
 
 # Routers
 app.include_router(users.router)  # Incluye el router de usuarios
-app.include_router(products.router)
+app.include_router(products.router)  # Incluye el router de productos
 
 # Url local: http://127.0.0.1:8000
 

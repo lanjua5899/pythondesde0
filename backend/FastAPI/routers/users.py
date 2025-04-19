@@ -4,7 +4,8 @@ from pydantic import BaseModel
 
 # Iniciar el servidor:
 
-router = APIRouter()
+router = APIRouter(
+    prefix="/users", tags=["users"], responses={404: {"message": "No encontrado"}})
 
 # Entidad de usuario
 
