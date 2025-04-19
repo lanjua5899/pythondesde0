@@ -14,10 +14,12 @@ from routers import users, products
 
 app = FastAPI()
 
-app.mount("/static", StaticFiles(directory="static"), name="static")
 # Routers
 app.include_router(users.router)  # Incluye el router de usuarios
 app.include_router(products.router)  # Incluye el router de productos
+# Exponer ficheros estáticos
+app.mount("/static", StaticFiles(directory="static"), name="static")
+
 
 # Url local: http://127.0.0.1:8000
 
