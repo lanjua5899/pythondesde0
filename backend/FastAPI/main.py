@@ -17,6 +17,11 @@ app = FastAPI()
 # Routers
 app.include_router(users.router)  # Incluye el router de usuarios
 app.include_router(products.router)  # Incluye el router de productos
+
+# Autenticación básica
+# Incluye el router de autenticación básica
+app.include_router(basic_auth_users.router)
+
 # Exponer ficheros estáticos
 app.mount("/static", StaticFiles(directory="static"), name="static")
 
