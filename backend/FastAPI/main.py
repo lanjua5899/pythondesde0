@@ -10,7 +10,7 @@ from typing import Union
 
 from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
-from routers import users, products
+from routers import users, products, basic_auth_users, jwt_auth_users
 
 app = FastAPI()
 
