@@ -22,6 +22,10 @@ app.include_router(products.router)  # Incluye el router de productos
 # Incluye el router de autenticación básica
 app.include_router(basic_auth_users.router)
 
+# Autenticación JWT
+# Incluye el router de autenticación JWT
+app.include_router(jwt_auth_users.router)
+
 # Exponer ficheros estáticos
 app.mount("/static", StaticFiles(directory="static"), name="static")
 
