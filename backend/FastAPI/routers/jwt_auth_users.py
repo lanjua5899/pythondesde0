@@ -1,14 +1,15 @@
 ### Users API con autenticación JWT ###
 
-import jwt
 from fastapi import APIRouter, Depends, HTTPException, status
 from pydantic import BaseModel
 from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
+from jose import jwt, JWTError
 from passlib.context import CryptContext
 from datetime import datetime, timedelta
 
 ALGORITHM = "HS256"
 ACCESS_TOKEN_DURATION_MINUTES = 1
+SECRET_KEY = "eac12ee0f75ca6639bdf17548e1917265b8b7acb58b72c0b685a1664317a5e06"
 
 router = APIRouter(prefix="/jwtauth", tags=["jwtauth"], responses={
                    status.HTTP_404_NOT_FOUND: {"message": "No encontrado"}})
@@ -71,4 +72,4 @@ async def login(form: OAuth2PasswordRequestForm = Depends()):
     access_token = {"sub": user.username, "exp": datetime.now(
     ) + timedelta(minutes=ACCESS_TOKEN_DURATION_MINUTES)}
 
-    return {"access_token": access_token, "token_type": "bearer"}
+    return {"access_token": jwt.encode(access_token, SECRET_KEY, algorithm=ALGORITHM), "token_type": "bearer"}
