@@ -10,7 +10,7 @@ from typing import Union
 
 from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
-from routers import users, products, basic_auth_users, jwt_auth_users
+from routers import users, products, basic_auth_users, jwt_auth_users, users_db
 
 app = FastAPI()
 
@@ -25,6 +25,9 @@ app.include_router(basic_auth_users.router)
 # Autenticación JWT
 # Incluye el router de autenticación JWT
 app.include_router(jwt_auth_users.router)
+
+# Incluye el router de usuarios de la base de datos
+app.include_router(users_db.router)
 
 # Exponer ficheros estáticos
 app.mount("/static", StaticFiles(directory="static"), name="static")
