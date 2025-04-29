@@ -39,3 +39,12 @@ async def user(user: User):
     new_user = user_schema(db_client.users.find_one({"_id": id}))
 
     return User(**new_user)
+
+
+def search_user(field: str, key):
+
+    try:
+        user = db_client.users.find_one({field: key})
+        return User(**user_schema(user))
+    except:
+        return {"error": "No se ha encontrado el usuario"}
