@@ -9,4 +9,13 @@
 
 from pymongo import MongoClient
 
-db_client = MongoClient()
+# Descomenta la línea de conexión a MongoDB que no se necesite
+
+# Base de datos local MongoDB
+db_client = MongoClient().local
+
+# Base de datos en MongoDB Atlas
+# db_client = MongoClient("mongodb+srv://<username>:<password>@cluster0.mongodb.net/test?retryWrites=true&w=majority")
+
+# Despliegue MongoDB en Docker:
+# docker run --name mongodb -d -p 27017:27017 -v /path/to/db:/data/db mongo
