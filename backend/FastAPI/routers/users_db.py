@@ -41,6 +41,15 @@ async def user(user: User):
     return User(**new_user)
 
 
+@router.delete("/{id}", status_code=status.HTTP_204_NO_CONTENT)
+async def user(id: str):
+
+    found = db_client.users.find_one_and_delete({"_id": ObjectId(id)})
+
+    if not found:
+        return {"error": "No se ha eliminado el usuario"}
+
+
 def search_user(field: str, key):
 
     try:
